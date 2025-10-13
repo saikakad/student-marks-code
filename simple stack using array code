@@ -1,0 +1,72 @@
+#include <iostream>
+using namespace std;
+#define MAX 100
+class stack{
+    int arr[MAX];
+    int top;
+    public:
+    stack(){
+        top = -1;
+    }
+    bool isEmpty(){
+        if (top == -1){
+            cout << "stack underflow" << endl;
+            return -1;
+        }
+    }
+    bool isFull(){
+        if(top == MAX - 1){
+            cout<<"stack overflow\n";
+        }
+    }
+void push(int value){
+    if(isFull()){
+        return;
+
+    }
+    else{
+        arr[++top] = value;
+    }
+}
+int pop(){
+    if(isEmpty()){
+        return -1;
+    }
+    else{
+        return arr[top--];
+    }
+}
+int peek(){
+    if(isEmpty()){
+        return -1;
+    }
+    else{
+        return arr[top];
+    }
+
+}
+   void display(){
+    if(isEmpty()){
+        return;
+    }
+    else{
+        for(int i=top; i>=0; i--){
+            cout<<arr[i]<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+};
+int main(){
+    stack S;
+    S.push(10);
+    S.push(20);
+    S.push(30);
+    S.display();
+    cout<<endl;
+    cout<<"Top element is: "<<S.peek()<<endl;
+    cout<<"popped element is: "<<S.pop()<<endl;
+    S.display();
+return 0;
+}
